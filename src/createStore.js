@@ -1,1 +1,26 @@
+import { render } from './index.js'
 
+function createStore(reducer) {
+  let state;
+
+  function dispatch(action) {
+    // debugger
+    state = reducer(state, action);
+    console.log(`the state is ${state.count}`);
+    console.log(`the action is ${action.type}`);
+    render();
+  };
+
+  function getState(){
+    return state;
+  };
+
+  
+
+  return {
+    dispatch,
+    getState
+  };
+};
+
+export default createStore
